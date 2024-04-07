@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mapContainer {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.vessel-marker-icon {
+    transform: translate3d(602px, 87px, 0px) rotateZ(var(--vessel-rotation-angle));
+  }

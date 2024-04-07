@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import VesselNav from "./components/VesselNav";
 function App() {
+  const startCoords = [22.1696, 91.4996];
+  const endCoords = [22.2637, 91.7159];
+  const speedKmph = 2000;
+  const screenRefreshRate = 2; // FPS
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VesselNav
+        startCoords={startCoords}
+        endCoords={endCoords}
+        speedKmph={speedKmph}
+        screenRefreshRate={screenRefreshRate}
+      />
     </div>
   );
 }
