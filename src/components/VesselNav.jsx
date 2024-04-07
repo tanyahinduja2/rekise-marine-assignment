@@ -64,46 +64,55 @@ const VesselNav = () => {
       const distance = startPoint.distanceTo(endPoint);
       const timeHours = distance / (speed * 1000);
       const numFrames = Math.ceil(refreshRate * timeHours * 3600);
-      const timeInterval = (timeHours * 3600) / numFrames;
-
+      const timeInterval = timeHours * 3600 / numFrames;
+      const endDelay = 2000;
+  
       let currentFrame = 0;
-
+  
       function updateVesselPosition() {
         const polyline = polylineRef.current;
-
+  
         if (!polyline) return;
-
+  
         const positions = polyline.getLatLngs();
-
+        const totalPositions = positions.length;
+  
         if (currentFrame >= numFrames) {
-          return;
+          setTimeout(() => {
+            currentFrame = 0; 
+            vesselMarkerRef.current.setLatLng(startPoint); 
+            updateVesselPosition();
+          }, endDelay);
+          return; 
         }
-
+  
         const percentage = currentFrame / numFrames;
-        const index = Math.floor(percentage * (positions.length - 1));
-
+        const index = Math.floor(percentage * (totalPositions - 1));
+  
         const startPosition = positions[index];
         const endPosition = positions[index + 1];
-
+  
         const deltaLat = endPosition.lat - startPosition.lat;
         const deltaLng = endPosition.lng - startPosition.lng;
-
+  
         const newPosition = L.latLng(
           startPosition.lat + deltaLat * percentage,
           startPosition.lng + deltaLng * percentage
         );
-
+  
         vesselMarkerRef.current.setLatLng(newPosition);
-
+  
         currentFrame++;
-
+  
         setTimeout(updateVesselPosition, timeInterval * 1000);
       }
-
+  
       updateVesselPosition();
     }
   }, [startCoordinates, endCoordinates, speed, refreshRate, polylineRendered]);
-
+  
+  
+  
   return (
     <div className="container">
       {/* <div>
