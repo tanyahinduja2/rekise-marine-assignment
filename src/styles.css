@@ -1,16 +1,83 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  margin: 50px 30px;
+  border: 2px solid black;
+  border-radius: 12px;
+  box-shadow: 15px 15px 60px #bebebe, -15px -15px 60px #ffffff;
+}
+
+.vessel-marker {
+  z-index: 10000;
+}
+
+.card {
+  height: 120px;
+  width: 45%;
+  border: 2px solid black;
+  border-radius: 18px;
+  background: #eeeded;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 40px;
+  font-size: 17px;
+}
+
+.from-info {
+    color: rgb(215, 0, 0);
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.mapContainer {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-    border-radius: 12px;
+.from-info p {
+    margin: 0;
 }
 
-.vessel-marker-icon {
-    transform: translate3d(602px, 87px, 0px) rotateZ(var(--vessel-rotation-angle));
-  }
+.from-info p span {
+    font-weight: bold;
+}
+
+.to-info {
+    color: rgb(36, 186, 2);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.to-info p {
+    margin: 0;
+}
+
+.to-info p span {
+    font-weight: bold;
+}
+
+.speed-info {
+    color: rgb(126, 36, 191);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.speed-info p span {
+    font-weight: bold;
+}
+
