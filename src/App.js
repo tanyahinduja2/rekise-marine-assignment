@@ -5,12 +5,7 @@ import VesselNav from "./components/VesselNav";
 function App() {
   return (
     <div className="App">
-      <VesselNav
-        startCoords={startCoords}
-        endCoords={endCoords}
-        speedKmph={speedKmph}
-        screenRefreshRate={screenRefreshRate}
-      />
+      <VesselNav />
     </div>
   );
 }
